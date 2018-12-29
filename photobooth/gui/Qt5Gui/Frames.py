@@ -25,6 +25,9 @@ import sys
 from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5 import QtWidgets
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+from PyQt5 import QtWidgets
 
 from .. import modules
 from ... import camera
@@ -65,15 +68,16 @@ class Welcome(QtWidgets.QFrame):
         btnLay.addWidget(btnSettings)
         btnLay.addWidget(btnQuit)
 
-        title = QtWidgets.QLabel(_('photobooth'))
+        title = QtWidgets.QLabel(_('Steampunk<br>Photobooth'))
+        title.setObjectName('WelcomeTitle')
 
-        url = 'https://github.com/reuterbal/photobooth'
+        url = 'https://citizensofantiford.com/photobooth'
         link = QtWidgets.QLabel('<a href="{0}">{0}</a>'.format(url))
 
         lay = QtWidgets.QVBoxLayout()
         lay.addWidget(title)
         lay.addLayout(btnLay)
-        lay.addWidget(link)
+        #lay.addWidget(link) # don't show here
         self.setLayout(lay)
 
 
@@ -94,8 +98,22 @@ class IdleMessage(QtWidgets.QFrame):
         lbl = QtWidgets.QLabel(self._message_label)
         btn = QtWidgets.QPushButton(self._message_button)
         btn.clicked.connect(trigger_action)
+        exitBtn = QtWidgets.QPushButton('x')
+        exitBtn.clicked.connect(lambda: 
+            #self.parent().is_escape = true
+            self.parent()._handle_key(QtGui.QKeyEvent(QtCore.QEvent.KeyPress, QtCore.Qt.Key_Escape, QtCore.Qt.NoModifier))
+        )
+        exitBtn.setObjectName('ExitFromIdle')
 
+        hSpacer = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+
+        topLay = QtWidgets.QHBoxLayout()
+        topLay.addStretch()
+        topLay.addItem(hSpacer)
+        topLay.addWidget(exitBtn)
+        
         lay = QtWidgets.QVBoxLayout()
+        lay.addLayout(topLay)
         lay.addWidget(lbl)
         lay.addWidget(btn)
         self.setLayout(lay)
@@ -339,17 +357,27 @@ class PostprocessMessage(Widgets.TransparentOverlay):
             return button
 
         buttons = [createButton(task) for task in tasks]
-        buttons.append(QtWidgets.QPushButton(_('Start over')))
+        buttons.append(QtWidgets.QPushButton(_('Okay')))
         buttons[-1].clicked.connect(idle_handle)
 
         button_lay = QtWidgets.QGridLayout()
         for i, button in enumerate(buttons):
             pos = divmod(i, 2)
             button_lay.addWidget(button, *pos)
+            
+
+        urlText = QtWidgets.QLabel('citizensofantiford.com/photobooth')
+        urlText.setObjectName('EndURL')
+        
+        vSpacer = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
 
         layout = QtWidgets.QVBoxLayout()
-        layout.addWidget(QtWidgets.QLabel(_('Happy?')))
+        layout.addWidget(QtWidgets.QLabel('Find your photos @<br>'))
+        layout.addWidget(urlText)
+        layout.addItem(vSpacer)
+
         layout.addLayout(button_lay)
+        #layout.addStretch()
         self.setLayout(layout)
 
 

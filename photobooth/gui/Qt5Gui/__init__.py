@@ -19,6 +19,7 @@
 
 # Available style sheets as tuples of (style name, style file)
 styles = (('default', 'stylesheets/default.qss'),
+          ('antiford', 'stylesheets/antiford.qss'),
           ('dark', 'stylesheets/dark.qss'),
           ('pastel', 'stylesheets/pastel.qss'))
 
