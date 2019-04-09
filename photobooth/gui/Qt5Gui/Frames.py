@@ -53,8 +53,8 @@ class Welcome(QtWidgets.QFrame):
         btnStart = QtWidgets.QPushButton(_('Start photobooth'))
         btnStart.clicked.connect(start_action)
 
-        btnSetDate = QtWidgets.QPushButton(_('Set date/time'))
-        btnSetDate.clicked.connect(set_date_action)
+        #btnSetDate = QtWidgets.QPushButton(_('Set date/time'))
+        #btnSetDate.clicked.connect(set_date_action)
 
         btnSettings = QtWidgets.QPushButton(_('Settings'))
         btnSettings.clicked.connect(settings_action)
@@ -99,7 +99,7 @@ class IdleMessage(QtWidgets.QFrame):
         btn = QtWidgets.QPushButton(self._message_button)
         btn.clicked.connect(trigger_action)
         exitBtn = QtWidgets.QPushButton('x')
-        exitBtn.clicked.connect(lambda: 
+        exitBtn.clicked.connect(lambda:
             #self.parent().is_escape = true
             self.parent()._handle_key(QtGui.QKeyEvent(QtCore.QEvent.KeyPress, QtCore.Qt.Key_Escape, QtCore.Qt.NoModifier))
         )
@@ -111,7 +111,7 @@ class IdleMessage(QtWidgets.QFrame):
         topLay.addStretch()
         topLay.addItem(hSpacer)
         topLay.addWidget(exitBtn)
-        
+
         lay = QtWidgets.QVBoxLayout()
         lay.addLayout(topLay)
         lay.addWidget(lbl)
@@ -364,11 +364,11 @@ class PostprocessMessage(Widgets.TransparentOverlay):
         for i, button in enumerate(buttons):
             pos = divmod(i, 2)
             button_lay.addWidget(button, *pos)
-            
+
 
         urlText = QtWidgets.QLabel('citizensofantiford.com\n/photobooth')
         urlText.setObjectName('EndURL')
-        
+
         vSpacer = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
 
         layout = QtWidgets.QVBoxLayout()
