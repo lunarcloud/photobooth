@@ -64,7 +64,7 @@ class Welcome(QtWidgets.QFrame):
 
         btnLay = QtWidgets.QHBoxLayout()
         btnLay.addWidget(btnStart)
-        btnLay.addWidget(btnSetDate)
+        #btnLay.addWidget(btnSetDate)
         btnLay.addWidget(btnSettings)
         btnLay.addWidget(btnQuit)
 
