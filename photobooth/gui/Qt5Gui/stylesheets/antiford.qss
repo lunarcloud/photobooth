@@ -3,8 +3,9 @@
 QWidget {
     background-color: transparent;
     color: #eeeeee;
-    font-family: "Ace of Spades", sans-serif;
-    font-size: 50px;
+    font-family: "Victorian Parlor Vintage"; /*"Ace of Spades", sans-serif;*/
+    font-size: 60px;
+    line-height: 50px;
 }
 
 QMainWindow {
@@ -29,8 +30,8 @@ QPushButton:pressed {
 
 /* Welcome Screen */
 #WelcomeTitle {
-    font-size: 160px;
-    font-family: "DEAD SECRETARY", serif;
+    font-size: 200px;
+    font-family: "Queen Victoria";/*"DEAD SECRETARY", serif;*/
     qproperty-alignment: AlignCenter;
 }
 

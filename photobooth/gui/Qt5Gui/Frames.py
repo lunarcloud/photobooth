@@ -366,13 +366,13 @@ class PostprocessMessage(Widgets.TransparentOverlay):
             button_lay.addWidget(button, *pos)
             
 
-        urlText = QtWidgets.QLabel('citizensofantiford.com/photobooth')
+        urlText = QtWidgets.QLabel('citizensofantiford.com\n/photobooth')
         urlText.setObjectName('EndURL')
         
         vSpacer = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
 
         layout = QtWidgets.QVBoxLayout()
-        layout.addWidget(QtWidgets.QLabel('Find your photos @<br>'))
+        layout.addWidget(QtWidgets.QLabel('Find your photos @'))
         layout.addWidget(urlText)
         layout.addItem(vSpacer)
 
